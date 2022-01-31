@@ -3,106 +3,107 @@ import java.util.Calendar;
 
 public class Student {
     static int idGenerator=1;
-
-    //инкапсулируюсь
     private int id;
-    private String fname;
-    private String sname;
-    private String patr;
-    private Calendar birth;
-    private String addr;
-    private String tel;
-    private String fac;
+
+
+    private String firstName;
+    private String secondName;
+    private String patronymic;
+    private Calendar birthDate;
+    private String address;
+    private String telephone;
+    private String faculty;
     private int course;
-    private int gr;
-
-
+    private int group;
 
 
 //Конструкторы с параметрами
-    public Student(int id, String fname,String sname,String patr,Calendar birth,String addr,String tel,
-                   String fac,int course,int gr ) {
+
+
+    public Student( int id, String firstName, String secondName, String patronymic, Calendar birthDate, String address, String telephone,
+                   String faculty, int course, int group) {
 
 
         this.id=idGenerator++;
-        this.fname=fname;
-        this.sname=sname;
-        this.patr=patr;
-        this.birth=birth;
-        this.addr=addr;
-        this.tel=tel;
-        this.fac=fac;
+        this.firstName =firstName;
+        this.secondName = secondName;
+        this.patronymic = patronymic;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.telephone = telephone;
+        this.faculty = faculty;
         this.course=course;
-        this.gr=gr;
+        this.group = group;
 
     }
 
-    public Student(int id,String fname,String sname,String patr, String fac ) {
+    public Student(int id, String firstName, String secondName, String patronymic, String faculty) {
 
         this.id=id;
-        this.fname=fname;
-        this.sname=sname;
-        this.patr=patr;
-        this.fac=fac;
+        this.firstName =firstName;
+        this.secondName = secondName;
+        this.patronymic = patronymic;
+        this.faculty = faculty;
 
     }
-    public Student(int id,String fname,String sname,String patr, String fac,int course ) {
+    public Student(int id, String firstName, String secondName, String patronymic, String faculty, int course ) {
 
         this.id=id;
-        this.fname=fname;
-        this.sname=sname;
-        this.patr=patr;
-        this.fac=fac;
+        this.firstName =firstName;
+        this.secondName = secondName;
+        this.patronymic = patronymic;
+        this.faculty = faculty;
         this.course=course;
 
     }
-    public Student(int id, String fname,String sname,String patr,Calendar birth ) {
+    public Student(int id, String firstName, String secondName, String patronymic, Calendar birthDate) {
 
         this.id=id;
-        this.fname=fname;
-        this.sname=sname;
-        this.patr=patr;
-        this.birth=birth;
+        this.firstName =firstName;
+        this.secondName = secondName;
+        this.patronymic = patronymic;
+        this.birthDate = birthDate;
 
     }
-    public Student(int id,String fname,String sname,String patr, String fac,int course,int gr ) {
+    public Student(int id, String firstName, String secondName, String patronymic, String faculty, int course, int group) {
 
         this.id=id;
-        this.fname=fname;
-        this.sname=sname;
-        this.patr=patr;
-        this.fac=fac;
+        this.firstName =firstName;
+        this.secondName = secondName;
+        this.patronymic = patronymic;
+        this.faculty = faculty;
         this.course=course;
-        this.gr=gr;
+        this.group = group;
 
     }
 
+//Конструктор без параметров
 
-    //Конструктор без параметров
     public Student(){
         id=idGenerator++;
     }
+
     public enum PrintFormat{
         F1, F2, F3,F4,F5
     }
     //Переопределяем метод для разных конструктров
-    public String toString(PrintFormat format){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        switch(format){
+    public String toString(PrintFormat printFormat){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        switch(printFormat){
             case F1:
-                return "ID: "+id+", "+fname+" "+sname+" "+patr+",  "+fac+" курс: "+course+" группа: "+gr;
+                return "ID: "+id+", "+ firstName +" "+ secondName +" "+ patronymic +",  "+ faculty +" курс: "+course+" группа: "+ group;
 
             case F2:
-                return "ID: "+id+" "+fname+" "+sname+" "+patr+",  "+fac;
+                return "ID: "+id+" "+ firstName +" "+ secondName +" "+ patronymic +",  "+ faculty;
 
             case F3:
-                return  "ID: "+id+" "+fname+" "+sname+" "+patr+",  "+fac+" курс: "+course;
+                return  "ID: "+id+" "+ firstName +" "+ secondName +" "+ patronymic +",  "+ faculty +" курс: "+course;
             case F4:
-                return "ID: "+id+" "+fname+" "+sname+" "+patr+",  "+formatter.format(birth.getTime());
+                return "ID: "+id+" "+ firstName +" "+ secondName +" "+ patronymic +",  "+simpleDateFormat.format(birthDate.getTime());
 
             default:
-                return "ID: "+getID()+", "+getFname()+" "+getSname()+" "+getPatr()+", дата рождения:"+formatter.format(getBirth().getTime())+", "+getAddr()+", телефон: "+
-                        getTel()+", "+getFac()+" курс: "+getCourse()+" группа: "+getGr();
+                return "ID: "+getID()+", "+ getFirstName()+" "+ getSecondName()+" "+ getPatronymic()+", дата рождения:"+simpleDateFormat.format(getBirthDate().getTime())+", "+ getAddress()+", телефон: "+
+                        getTelephone()+", "+ getFaculty()+" курс: "+getCourse()+" группа: "+ getGroup();
 
         }
 
@@ -111,62 +112,62 @@ public class Student {
 
 
 
-    //определяем геттеры и сеттеры
+
 
     public int getID(){return id;}
 
-    public String getFname() {
-        return fname;
+    public String getFirstName() {
+        return firstName;
     }
-    public String getSname() {
-        return sname;
+    public String getSecondName() {
+        return secondName;
     }
-    public String getPatr() {
-        return patr;
+    public String getPatronymic() {
+        return patronymic;
     }
-    public String getFac() {
-        return fac;
+    public String getFaculty() {
+        return faculty;
     }
     public int getCourse() {
         return course;
     }
-    public Calendar getBirth() {
-        return birth;
+    public Calendar getBirthDate() {
+        return birthDate;
     }
-    public int getGr() {
-        return gr;
+    public int getGroup() {
+        return group;
     }
-    public String getAddr() {
-        return addr;
+    public String getAddress() {
+        return address;
     }
-    public String getTel() {
-        return tel;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setFname(String fname) {this.fname = fname;}
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setFirstName(String firstName) {this.firstName = firstName;}
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
-    public void setPatr(String patr) {
-        this.patr = patr;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
-    public void setBirth(Calendar birth) {
-        this.birth = birth;
+    public void setBirthDate(Calendar birthDate) {
+        this.birthDate = birthDate;
     }
-    public void setAddr(String addr) {
-        this.addr = addr;
+    public void setAddress(String address) {
+        this.address = address;
     }
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
-    public void setFac(String fac) {
-        this.fac = fac;
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
     }
     public void setCourse(int course) {
         this.course = course;
     }
-    public void setGr(int gr) {
-        this.gr = gr;
+    public void setGroup(int group) {
+        this.group = group;
     }
 
 }
