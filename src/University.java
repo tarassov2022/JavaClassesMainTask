@@ -66,7 +66,7 @@ public class University {
     }
     // Создаем методы для формирования  данных ввиде списка объектов согласно заданным критериям поиска
     public ArrayList<Student> findStudentsByFaculty(String faculty) {
-        ArrayList<Student> studentsOfFacultyList = new ArrayList();
+        ArrayList<Student> studentsOfFacultyList = new ArrayList<>();
          for (Student student : students) {
             if (student.getFaculty().equals(faculty)) {
                 studentsOfFacultyList.add(new Student(student.getID(), student.getFirstName(), student.getSecondName(), student.getPatronymic(), student.getFaculty()));
@@ -76,7 +76,7 @@ public class University {
         return studentsOfFacultyList;
     }
     public ArrayList<Student> findStudentsByCourseAndFaculty(String faculty, int course ) {
-        ArrayList<Student> studentsOfCourseAndFacultyList = new ArrayList();
+        ArrayList<Student> studentsOfCourseAndFacultyList = new ArrayList<>();
         for (Student student : students) {
             if ((student.getCourse()==course)&(student.getFaculty().equals(faculty))) {
                 studentsOfCourseAndFacultyList.add(new Student(student.getID(), student.getFirstName(), student.getSecondName(), student.getPatronymic(), student.getFaculty(), student.getCourse()));
@@ -86,7 +86,7 @@ public class University {
         return studentsOfCourseAndFacultyList;
     }
     public ArrayList<Student> findStudentsByCourseByFacultyAndByGroup(String faculty, int course, int group ) {
-        ArrayList<Student> studentsOfGroupOfCourseAndOfFacultyList = new ArrayList();
+        ArrayList<Student> studentsOfGroupOfCourseAndOfFacultyList = new ArrayList<>();
         for (Student student : students) {
             if ((student.getCourse()==course)&(student.getFaculty().equals(faculty))&(student.getGroup()==group)) {
                 studentsOfGroupOfCourseAndOfFacultyList.add(new Student(student.getID(), student.getFirstName(), student.getSecondName(), student.getPatronymic(), student.getFaculty(), student.getCourse(), student.getGroup()));
@@ -96,7 +96,7 @@ public class University {
         return studentsOfGroupOfCourseAndOfFacultyList;
     }
     public ArrayList<Student> findStudentsByBirthDate(Calendar dateOfBirth) {
-        ArrayList<Student> studentsBornAfterTheDateList = new ArrayList();
+        ArrayList<Student> studentsBornAfterTheDateList = new ArrayList<>();
         for (Student student : students) {
             if (dateOfBirth.get(Calendar.YEAR)<student.getBirthDate().get(Calendar.YEAR)) {
                 studentsBornAfterTheDateList.add(new Student(student.getID(), student.getFirstName(), student.getSecondName(), student.getPatronymic(), student.getBirthDate()));
